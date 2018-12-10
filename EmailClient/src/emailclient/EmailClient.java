@@ -8,8 +8,8 @@ package emailclient;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -22,7 +22,7 @@ public class EmailClient extends Application {
     public void start(Stage primaryStage) {
         
         
-        Parent root = null;
+        AnchorPane root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("MainLayout.fxml"));
         } catch (IOException ex) {
