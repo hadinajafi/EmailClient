@@ -7,10 +7,13 @@ package emailclient;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.WebView;
 
 /**
@@ -31,11 +34,24 @@ public class MainLayoutController implements Initializable {
     private TreeView<?> treeView;
 
     @FXML
-    private ListView<?> emailListView;
+    private TableView<EmailMessageBean> tableView;
+
+    @FXML
+    private TableColumn<EmailMessageBean, String> subjectColumn;
+
+    @FXML
+    private TableColumn<EmailMessageBean, String> senderColumn;
+
+    @FXML
+    private TableColumn<EmailMessageBean, Integer> sizeColumn;
+
+    private ObservableList<EmailMessageBean> data;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        senderColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
     }    
     
 }
