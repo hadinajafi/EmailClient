@@ -3,5 +3,6 @@
  */
 
 .mainFxmlClass {
-    
+    -fx-background-color: radial-gradient(center 78% 5%, radius 60%, #99bbff, #ccddff);
+    -fx-background-repeat: repeat, no-repeat;
 }
