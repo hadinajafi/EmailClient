@@ -30,7 +30,7 @@ public class EmailClient extends Application {
         }
         
         Scene scene = new Scene(root);
-        
+        scene.getStylesheets().add(getClass().getResource("mainlayout.css").toExternalForm());
         primaryStage.setTitle("Teyhu Email Client");
         primaryStage.setScene(scene);
         primaryStage.show();
