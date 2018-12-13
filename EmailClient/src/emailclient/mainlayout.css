@@ -3,6 +3,11 @@
  */
 
 .mainFxmlClass {
-    -fx-background-color: radial-gradient(center 78% 5%, radius 60%, #99bbff, #ccddff);
+    -fx-background-color: linear-gradient(from 1% 1% to 60% 60%, #0789AC, #98DEF1);
+    -fx-background-repeat: repeat, no-repeat;
+}
+
+.tree-view .tree-cell:selected{
+    -fx-background-color: linear-gradient(from 0% 100% to 100% 100%, #0789AC, #98DEF1);
     -fx-background-repeat: repeat, no-repeat;
 }
