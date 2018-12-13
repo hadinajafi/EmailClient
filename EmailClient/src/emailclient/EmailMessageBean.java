@@ -5,7 +5,8 @@
  */
 package emailclient;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -15,12 +16,13 @@ import javafx.beans.property.SimpleStringProperty;
 public class EmailMessageBean {
     private SimpleStringProperty sender;
     private SimpleStringProperty subject;
-    private SimpleIntegerProperty size;
+    private SimpleStringProperty size;
+    public static Map<String, Integer> formattedValues = new HashMap<>(); //can be used for comperator in size column.
     
     public EmailMessageBean(String subject, String sender, int size){
         this.subject = new SimpleStringProperty(subject);
         this.sender = new SimpleStringProperty(sender);
-        this.size = new SimpleIntegerProperty(size);
+        this.size = new SimpleStringProperty(formattedSize(size));
     }
     
     public String getSubject(){
@@ -29,7 +31,23 @@ public class EmailMessageBean {
     public String getSender(){
         return sender.get();
     }
-    public int getSize(){
+    public String getSize(){
         return size.get();
+    }
+    
+    //format the size with bytes, Kbytes ot Megabytes:
+    private String formattedSize(int size){
+        String formattedSizeString;
+        if(size <= 0)
+            formattedSizeString = "0";
+        else if(size < 1024)
+            formattedSizeString = size + " B";
+        else if (size < 1048576)
+            formattedSizeString = size/1024 + " KB";
+        else
+            formattedSizeString = size/1048576 + " MB";
+        
+        formattedValues.put(formattedSizeString, size);
+        return formattedSizeString;
     }
 }
